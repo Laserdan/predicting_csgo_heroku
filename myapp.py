@@ -54,10 +54,10 @@ input_df.loc[0, map_played] = 1
 
 if team == 'Counter-Terrorists':
     enemy_team = 'Terrorist'
-    model = load('../models/db_t_nxt_rnd_type.joblib')
+    model = load('models/db_t_nxt_rnd_type.joblib')
 elif team == 'Terrorists':
     enemy_team = 'Counter-Terrorist'
-    model = load('../models/db_ct_nxt_rnd_type.joblib')
+    model = load('models/db_ct_nxt_rnd_type.joblib')
 
 prediction_encoded = model.predict(input_df)[0]
 pred_proba = model.predict_proba(input_df)[0][:-1]
