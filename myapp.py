@@ -67,11 +67,3 @@ st.write(f'Next round type of {enemy_team} team will be...')
 st.write(round_type_dic_decode[prediction_encoded])
 st.bar_chart(pred_proba_df.iloc[0])
 
-
-
-
-
-
-
-
-# st.markdown( <style>round_type_dic_decode[prediction_encoded] {text-align: center;}</style>, unsafe_allow_html=True)
