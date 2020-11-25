@@ -62,10 +62,10 @@ input_df.loc[0, map_played] = 1  # Add the map to the input dataframe. Manual On
 # Load predictor model depending on the team selected
 if team == 'Counter-Terrorists':
     enemy_team = 'Terrorist'
-    model = load('../models/db_t_nxt_rnd_type.joblib')
+    model = load('models/db_t_nxt_rnd_type.joblib')
 elif team == 'Terrorists':
     enemy_team = 'Counter-Terrorist'
-    model = load('../models/db_ct_nxt_rnd_type.joblib')
+    model = load('models/db_ct_nxt_rnd_type.joblib')
 
 # Make predictions and prediction probabilites
 prediction_encoded = model.predict(input_df)[0]
@@ -98,10 +98,10 @@ input_df['nxt_rnd_type'] = prediction_encoded
 # Load predictor model depending on the team selected
 if team == 'Counter-Terrorists':
     enemy_team = 'Terrorist'
-    model_winner = load('../models/db_t_winner_team.joblib')
+    model_winner = load('models/db_t_winner_team.joblib')
 elif team == 'Terrorists':
     enemy_team = 'Counter-Terrorist'
-    model_winner = load('../models/db_ct_winner_team.joblib')
+    model_winner = load('models/db_ct_winner_team.joblib')
 
 # Make predictions and prediction probabilites
 pred_winner_encoded = model_winner.predict(input_df)[0]
