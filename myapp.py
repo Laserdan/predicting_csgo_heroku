@@ -76,7 +76,7 @@ category_names = list(pred_proba_df.columns)
 
 c = alt.Chart(source).mark_bar().encode(
     x=alt.X('Round type', sort=category_names , axis=alt.Axis(title='', labelAngle=0)),
-    y=alt.X('Probability', axis=alt.Axis(title='', labelAngle=0))).interactive()
+    y=alt.Y('Probability', scale=alt.Scale(domain=[0,1]), axis=alt.Axis(title='', labelAngle=0))).interactive()
 col3.altair_chart(c, use_container_width=True)
 
 col3.write(f' ')
