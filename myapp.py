@@ -24,7 +24,7 @@ team = col2.selectbox('Select your team', ('Counter-Terrorists', 'Terrorists'))
 def user_input_features():
 
 
-    round = col1.number_input('Round', value=1)
+    round = col1.number_input('Round', value=1, min_value=0)
     winner = team_dict[col1.selectbox('Who win the round?', ('Counter-Terrorists', 'Terrorists'))]
     bomb_planted = yes_no_dict[col1.selectbox('Was the bomb planted?', ('YES', 'NO'))]
     round_type = round_type_dic[col1.selectbox('Select enemy\'s round type', ('PISTOL_ROUND', 'ECO', 'MEDIUM', 'FULL'))]
