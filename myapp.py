@@ -81,3 +81,6 @@ col3.altair_chart(c, use_container_width=True)
 
 col3.write(f' ')
 col3.write(f'Next round winner... In progress')
+
+col3.write(f' ')
+col3.write(f'Valve, hire me please \U0001F64F')
