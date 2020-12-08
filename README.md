@@ -1,10 +1,12 @@
-# Predicting CS:GO FTW
+# Predicting CS:GO FTW Web App
 
 <br>
 
 **Victor Lucia**
 
 **Ironhack Madrid 2020 Part-time**
+
+**[Link to Web App](https://predicting-csgo-app.herokuapp.com/)**
 ##
 
 <br>
@@ -17,46 +19,44 @@ Counter-Strike: Global Offensive forms part of the eSports, a growing market tha
 
 ![Image](https://raw.githubusercontent.com/Laserdan/Predicting_CSGO_FTW/master/assets/csgo_cup.jpg)
 
-## :floppy_disk: Data Source
+## :computer: Webb App
 
-The original data came from a [Kaggle dataset](https://www.kaggle.com/skihikingkevin/csgo-matchmaking-damage), where more than 12.000 matches are tracked. 
+This is the Web App of my final project made for the Data Analytics Bootcamp at Ironhack.
 
-An important fact is that matches are not from the in-game matchmaking system. They are from a third-party service called [ESEA](https://play.esea.net/), a competitive environment with experimented players and where professional teams train and compete. This makes that we can consider the reliability of the data, knowing that most of the information will be relevant and usable.
+You can find the core of the project in my repo [Predicting_CSGO_FTW](https://github.com/Laserdan/Predicting_CSGO_FTW)
 
-[Here](https://www.kaggle.com/danielmazzone/csgo-data-analysis-and-machine-learning) you can find an exploratory analysis of the data made by Daniel Mazzone
+This repo is used to load the predicting models, and deploy the app to make it available for everybody.
 
 
 ##  :nut_and_bolt: Workflow
 
-### :mag: Obtain the prediction models
-From the kaggle datasets:
-- <code>esea_master_dmg_clean_demos.csv</code>
-- <code>esea_master_grenades_clean_demos.csv</code>
-- <code>esea_meta_demos.csv</code>
-- <code>esea_master_kills_demos.csv</code>
 
-Obtain the following features through processing ([2_1_ml_preprocessingdata.ipynb](https://github.com/Laserdan/Predicting_CSGO_FTW/blob/master/notebooks/2_1_ml_preprocessingdata.ipynb)):
-- file
-- round
-- weapons value (value from records and fill the missing data with the mean)
-- grenades value (value from records)
-- players alive previous round
-- winner team
-- bomb planted previous round
-- consecutive wins
-- real team value
-- round type
+From the machine learning predictive models made in the [previous repo](https://github.com/Laserdan/Predicting_CSGO_FTW), we load them to make 2 predictions:
+- Probability of the next round type for the enemy team.
+- Probability of each team to be the winner of the round.
 
-![Image](https://raw.githubusercontent.com/Laserdan/Predicting_CSGO_FTW/master/assets/acquisition_table.png)
+Thanks to the [streamlit library](https://www.streamlit.io/), we create a dashboard for the input of the data and the output of the predictions.
+The player fills the required fields to give the ingest data to the models and them print down the predictions.
 
-1. **Regressor models to obtain <code>ct_val_pred</code> and <code>t_val_pred</code> ([2_4_ml_regressor_lgbm_tuning.ipynb](https://github.com/Laserdan/Predicting_CSGO_FTW/blob/master/notebooks/2_4_ml_regressor_lgbm_tuning.ipynb))**
+To be accesible 24/7 to everybody, the app is hosted in [Heroku](https://www.heroku.com/)
 
-2. **Multiclass classifier models to obtain <code>ct_nxt_rnd_type_pred</code> and <code>t_nxt_rnd_type_pred</code> ([4_3_ml_clas_nxt_rnd_val.ipynb](https://github.com/Laserdan/Predicting_CSGO_FTW/blob/master/notebooks/4_3_ml_clas_nxt_rnd_val.ipynb))**
 
-3. **Classifier model to obtain <code>nxt_ct_winner_pred</code> ([5_2_algorithm_election_ml_clas_winner_team.ipynb](https://github.com/Laserdan/Predicting_CSGO_FTW/blob/master/notebooks/5_2_algorithm_election_ml_clas_winner_team.ipynb))**
+## :mag: How to
 
-### :flags: Pipeline
-Pipeline with the models loaded which digest the data from the rounds and return de predictions on the fly.
+The player should fill the fields accordingly with the description:
+
+- <code>Select Map</code>: Select the name of the map where the match takes part.
+- <code>Select your team</code>: Select the side the player will be playing: Counter-Terrorist or Terrorist.
+- <code>Round</code>: Select the current round the player is playing.
+- <code>Who win the round?</code>: Select the team who win the previous round: Counter-Terrorist or Terrorist.
+- <code>Was the bomb planted?</code>: Select YES or NOT accordingly if the bomb was planted in the previous round.
+- <code>Select enemy's round type</code>: Select from the menu what type of round you consider the enemy team did the previous round. Possibilities: PISTOL_ROUND, ECO, MEDIUM, FULL.
+- <code>CT players alive previous round</code>: The number of players from the CT side that remain alive at the end of the previous round.
+- <code>T players alive previous round</code>: The number of players from the T side that remain alive at the end of the previous round.
+- <code>CT consecutive wins</code>: The number of rounds that the CT side is consecutive winning counting the last round.
+- <code>T consecutive wins</code>: The number of rounds that the T side is consecutive winning counting the last round.
+
+
 
 ## :printer: Output
 
