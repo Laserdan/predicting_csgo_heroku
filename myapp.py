@@ -129,4 +129,4 @@ c = alt.Chart(source_winner).mark_bar().encode(
 col2.altair_chart(c, use_container_width=True)
 
 st.write(f' ')
-st.write(f'Valve, hire me please \U0001F64F')
+st.markdown('Created by: Victor Lucia    [linkedin](https://www.linkedin.com/in/victor-lucia/)')
